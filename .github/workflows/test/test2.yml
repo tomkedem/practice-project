@@ -1,0 +1,16 @@
+name: Issues Event Workflow
+on: 
+  issues:
+    types: [opened, edited, closed]
+
+jobs:
+    log-event:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Print Event Details
+            run: |
+              echo "Issue Event Triggered"
+              echo "Action: ${{ github.event.action }}"
+              echo "Issue Title: ${{ github.event.issue.title }}"
+              echo "Issue Body: ${{ github.event.issue.body }}"
+              echo "Created By: ${{ github.event.issue.user.login }}"
